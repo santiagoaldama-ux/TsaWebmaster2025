@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Community Hub</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><a href="index.html">Community Hub</a></div>
+
+        <div class="nav-links" id="mainNav">
+            <ul>
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="events.html">Events</a></li>
+                <li class="nav-item"><a href="news.html">News</a></li>
+                <li class="nav-item"><a href="departments.html">Departments</a></li>
+                <li class="nav-item"><a href="buisness.html">Buisness</a></li>
+                <li class="nav-item"><a href="services.html">Service</a></li>
+            </ul>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="mainNav" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+    </nav>
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="https://www.southernliving.com/thmb/IAo66tSMykJJg82c616DbQoBTAg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Louisville-Skyline-3-2--488a6388ba5c49a0a2b007217225f0fc.jpg" class="slide-image">
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="https://www.gotolouisville.com/imager/s3_us-east-1_amazonaws_com/louisville-2019/images/Belle-of-Louisville-Big-Four-Bridge-lighter_bc0d2157d501d4729a3d5631708a6b2e.jpg" class="slide-image">
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="https://www.gotolouisville.com/imager/s3_us-east-1_amazonaws_com/louisville-2019/images/LouisvilleSkyline_Bridge-Horizontal_f69c17b56b270deda0220b2ba6b4d051.jpg" class="slide-image">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>    
+</div>
+<br>
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+    
+</body>
+
+    <script>
+        // Mobile nav toggle only
+        (function(){
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if(navToggle && navLinks){
+                navToggle.addEventListener('click', ()=>{
+                    const open = navLinks.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', open);
+                });
+            }
+        })();
+
+        // Slideshow JavaScript
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Auto advance slides
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000); // Change slide every 5 seconds
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Fade-in animation for grid items
+        function revealOnScroll() {
+            document.querySelectorAll('.news-item, .event-item').forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+        // Back to Top button
+        const backToTop = document.createElement('button');
+        backToTop.textContent = '↑ Top';
+        backToTop.className = 'back-to-top';
+        backToTop.style.display = 'none';
+        document.body.appendChild(backToTop);
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+<br>
+<body>
+    
+    <h1>Welcome to Louisville</h1>
+    <div class="shaded-box">
+        <p>Discover the vibrant community of Louisville through our comprehensive hub. Whether you're looking for local resources, upcoming events, or essential services, we've got you covered. Explore our site to connect with the heart of Louisville!</p>
+        <p>This is a place to connect and learn about Louisville's community</p>
+    </div>
+    <h1>Recent News!</h1>
+    <div class="news-grid">
+        <div class="news-item">
+            <div class="date">OCT 28</div>
+            <div class="content">Government shuts down!</div>
+        </div>
+        <div class="news-item">
+            <div class="date">OCT 15</div>
+            <div class="content">New park opens downtown!</div>
+        </div>
+        <div class="news-item">
+            <div class="date">SEP 30</div>
+            <div class="content">Community festival this weekend!</div>
+        </div>
+        <button onclick="location.href='news.html'">Read More News</button>
+    </div>
+
+    <h1>Upcoming Events!</h1>
+    <div class="events-grid">
+        <div class="event-item">
+            <div class="date">NOV 5</div>
+            <div class="content">Charity Run for Local Schools!</div>
+        </div>
+        <div class="event-item">
+            <div class="date">NOV 12</div>
+            <div class="content">Art Walk in Downtown Louisville!</div>
+        </div>
+        <div class="event-item">
+            <div class="date">NOV 20</div>
+            <div class="content">Thanksgiving Community Dinner!</div>
+        </div>
+        
+        <button onclick="location.href='events.html'" >View All Events</button>
+    </div>
+    <br>
+    <center>
+        <h1>View the city</h1>
+        <video width="800" height="450" controls>
+            <source src="https://www.youtube.com/watch?v=bzUqZp_lZg4" type="video/mp4">
+
+            
+            
+    </center>
+    
+    
+
+</body>
+    
+</html>
